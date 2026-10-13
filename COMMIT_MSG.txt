@@ -1,0 +1,25 @@
+Correct the README where it describes files that do not exist
+
+The Project Structure section listed files that were never committed, so anyone
+following it hit dead ends:
+
+- src/wokwi_simulation/{sketch.ino, diagram.json, libraries.txt} do not exist. The
+  Simulation section told readers to "replace the files with" them. It now says the
+  Wokwi project is not stored in the repo and points at the real firmware.
+- hardware/3d_model/DigitalSafe_Maquette.scad does not exist. The maquette section
+  now states the model lives in Tinkercad.
+- docs/report.docx is actually docs/report/final_report.docx, and docs/poster.html
+  is actually docs/poster/poster_A0.pdf.
+- docs/datasheets/ (seven component datasheets) existed but was undocumented; it is
+  now in the tree.
+- Root folder name was given as Digital-Safe-System; the repo is
+  Digital-Safe-Embedded-System.
+
+Also fixed a duplicated student ID: Youssef Hassan was listed as 257745, the same
+ID as Ziad Youssef. His own address is youssef250498@bue.edu.eg, and every other
+row's BUE address embeds that student's ID (mahmoud257678, zeina254588, ...), so
+250498 is the consistent value - and it matches the ID used for him in the
+OnlineBankingSystem README.
+
+Verified: every filename in the Project Structure tree now exists on disk, and no
+file on disk is missing from the tree.

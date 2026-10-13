@@ -179,12 +179,13 @@ During lockout, **all methods are blocked** (keypad, RFID, BLE, master code). Th
 
 ### Wokwi Online Simulator
 
+The simulation sources are **not included in this repository** — the Wokwi project
+lives on the Wokwi site. To rebuild it:
+
 1. Go to [wokwi.com](https://wokwi.com) → New Project → ESP32-S3
-2. Replace the files with:
-   - `src/wokwi_simulation/sketch.ino`
-   - `src/wokwi_simulation/diagram.json`
-   - `src/wokwi_simulation/libraries.txt`
-3. Click **Play**
+2. Load the production sketch `src/real_hardware/DigitalSafe_A1401.ino` and add the
+   libraries listed under [Required Libraries](#required-libraries)
+3. Adapt any hardware-only calls (see the table below), then click **Play**
 
 ### Simulation Differences
 
@@ -207,31 +208,40 @@ CHPASS:5678  → Change password
 ## 📁 Project Structure
 
 ```
-Digital-Safe-System/
+Digital-Safe-Embedded-System/
 ├── README.md
 ├── LICENSE
+├── .gitignore
 ├── src/
-│   ├── real_hardware/
-│   │   └── DigitalSafe_A1401.ino    # Production code with BLE
-│   └── wokwi_simulation/
-│       ├── sketch.ino                # Wokwi-adapted code
-│       ├── diagram.json              # Wokwi circuit layout
-│       └── libraries.txt             # Wokwi library list
+│   └── real_hardware/
+│       └── DigitalSafe_A1401.ino    # Production firmware with BLE
 ├── docs/
-│   ├── report.docx                   # Project report
-│   └── poster.html                   # A0 poster (print to PDF)
+│   ├── datasheets/                  # Component datasheets (PDF)
+│   │   ├── ESP32-S3.pdf
+│   │   ├── MFRC522.pdf
+│   │   ├── SH1107.pdf
+│   │   ├── 4x4 Matrix Membrane Keypad.pdf
+│   │   ├── SG90.pdf
+│   │   ├── Buzzer.pdf
+│   │   └── LED.pdf
+│   ├── poster/
+│   │   └── poster_A0.pdf            # A0 project poster
+│   └── report/
+│       └── final_report.docx        # Full project report
 ├── hardware/
-│   ├── 3d_model/
-│   │   └── DigitalSafe_Maquette.scad # OpenSCAD 3D model
 │   └── circuit/
-│       └── wiring_guide.md           # Pin-by-pin wiring
+│       └── wiring_guide.md          # Pin-by-pin wiring
 └── assets/
-    └── banner.svg                    # Repo banner image
+    └── banner.svg                   # Repo banner image
 ```
+
+> Two things referenced below are **not** stored in this repository: the Wokwi
+> simulation project and the 3D enclosure model. See
+> [Simulation](#-simulation) and [3D Printed Maquette](#-3d-printed-maquette).
 
 ## 🏗️ 3D Printed Maquette
 
-The safe enclosure is designed in [https://tinkercad.com/](https://www.tinkercad.com/) 3D Design with 3 printable parts:
+The safe enclosure is designed in [Tinkercad](https://www.tinkercad.com/) 3D Design with 3 printable parts. **The model file itself is not stored in this repository** — it lives in Tinkercad.
 
 **Print Settings:** PLA, 0.2mm layer height, 20% infill, no supports needed.
 
@@ -245,7 +255,7 @@ The safe enclosure is designed in [https://tinkercad.com/](https://www.tinkercad
 | Zainab Sabit | 257156 | zainab257156@bue.edu.eg |
 | Mahmoud Samir | 257678 | mahmoud257678@bue.edu.eg |
 | Sondos Alaaeldin | 250362 | sondos250362@bue.edu.eg |
-| Youssef Hassan | 257745 | youssef250498@bue.edu.eg |
+| Youssef Hassan | 250498 | youssef250498@bue.edu.eg |
 | Ziad Youssef | 257745 | ziad257745@bue.edu.eg |
 
 ## 📄 License
